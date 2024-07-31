@@ -1,0 +1,55 @@
+﻿@model ErrorViewModel
+@{
+    Layout = "";
+}
+<!DOCTYPE html>
+<html lang="en">
+
+
+<!-- errors-500.html  21 Nov 2019 04:05:02 GMT -->
+<head>
+  <meta charset="UTF-8">
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
+  <title>Error - House4</title>
+  <!-- General CSS Files -->
+  <link rel="stylesheet" href="~/css/app.min.css">
+  <!-- Template CSS -->
+  <link rel="stylesheet" href="~/css/style.css">
+  <link rel="stylesheet" href="~/css/components.css">
+  <!-- Custom style CSS -->
+  <link rel="stylesheet" href="~/css/custom.css">
+  <link rel='shortcut icon' type='image/x-icon' href='~/img/favicon.ico' />
+</head>
+
+<body>
+  <div class="loader"></div>
+  <div id="app">
+    <section class="section">
+      <div class="container mt-5">
+        <div class="page-error">
+          <div class="page-inner">
+            <h1>500</h1>
+            <div class="page-description">
+              Whoopps, something went wrong.
+            </div>  
+            <div class="buttons">
+                      <a href="@Url.Action("Index", "Home")" class="btn btn-primary">Back To Home</a>
+                      </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- General JS Scripts -->
+  <script src="~/js/app.min.js"></script>
+  <!-- JS Libraies -->
+  <!-- Page Specific JS File -->
+  <!-- Template JS File -->
+  <script src="~/js/scripts.js"></script>
+  <!-- Custom JS File -->
+  <script src="~/js/custom.js"></script>
+</body>
+
+
+<!-- errors-500.html  21 Nov 2019 04:05:02 GMT -->
+</html>

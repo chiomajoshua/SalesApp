@@ -1,0 +1,90 @@
+﻿@model OrderManagement.Data.Models.Response.Orders.SalesOrder;
+@{
+    ViewData["Title"] = "Search Order";
+}
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h4>Search Order</h4>
+            </div>
+            <div class="card-body">
+                <form method="get" asp-action="SearchOrder">
+                    <div class="form-group">
+                        <label for="orderNumber">Order Number</label>
+                        <input type="text" class="form-control" id="orderNumber" name="orderNumber" required />
+                    </div>
+                    <button type="submit" class="btn btn-primary">Search</button>
+                </form>
+            </div>
+        </div>
+
+        @if (Model?.OrderHeader is not null)
+        {
+            <div class="card mt-4">
+                <div class="card-header">
+                    <h4>Order Details</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p><strong>Order Number:</strong> @Model.OrderHeader.OrderNumber</p>
+                            <p><strong>Order Type:</strong> @Model.OrderHeader.OrderType</p>
+                        </div>
+                        <div class="col-md-6">
+                            <p><strong>Order Status:</strong> @Model.OrderHeader.OrderStatus</p>
+                            <p><strong>Customer Name:</strong> @Model.OrderHeader.CustomerName</p>
+                        </div>
+                        <div class="col-md-12">
+                            <p><strong>Create Date:</strong> @Model.OrderHeader.CreateDate.ToString("MM/dd/yyyy")</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            @if (Model.OrderHeader.OrderLine.Count > 0)
+            {
+                <div class="card mt-4">
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-striped" id="table-1">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center">LineNumber</th>
+                                        <th>ProductCode</th>
+                                        <th>ProductType</th>
+                                        <th>CostPrice</th>
+                                        <th>SalesPrice</th>
+                                        <th>Quantity</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model.OrderHeader.OrderLine)
+                                    {
+                                        <tr>
+                                            <td>@item.LineNumber</td>
+                                            <td>@item.ProductCode</td>
+                                            <td>@item.ProductType</td>
+                                            <td class="align-middle">@item.CostPrice</td>
+                                            <td class="align-middle">@item.SalesPrice</td>
+                                            <td>@item.Quantity</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div class="alert alert-warning mt-4">No order lines found for the given order number.</div>
+            }
+        }
+        else if (Model is null)
+        {
+            <div class="alert alert-warning mt-4">No orders found with the given order number.</div>
+        }
+    </div>
+</div>

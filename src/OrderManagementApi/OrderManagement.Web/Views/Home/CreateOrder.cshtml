@@ -1,0 +1,97 @@
+﻿@model OrderManagement.Data.Models.Request.Orders.CreateOrderHeader;
+
+@{
+    ViewData["Title"] = "Create Order";
+}
+
+<div class="row">
+    <div class="col-12">
+        <h2>Create Order</h2>
+            <form method="post" asp-action="CreateOrder">
+            <div class="form-group">
+                <label for="orderNumber">Order Number</label>
+                <input type="text" class="form-control" id="orderNumber" name="OrderNumber" required>
+            </div>
+            <div class="form-group">
+                <label for="orderType">Order Type</label>
+                <select class="form-control" id="orderType" name="OrderType">
+                    <option value="0">Normal</option>
+                    <option value="1">Staff</option>
+                    <option value="2">Mechanical</option>
+                    <option value="3">Mechanical</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="createDate">Create Date</label>
+                <input type="date" class="form-control" id="createDate" name="CreateDate" required>
+            </div>
+
+            <h4>Order Lines</h4>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Line Number</th>
+                        <th>Product Code</th>
+                        <th>Product Type</th>
+                        <th>Cost Price</th>
+                        <th>Sales Price</th>
+                        <th>Quantity</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="orderLines">
+                    <tr>
+                        <td><input type="number" class="form-control" name="OrderLine[0].LineNumber" required></td>
+                        <td><input type="text" class="form-control" name="OrderLine[0].ProductCode" required></td>
+                        <td>
+                            <select class="form-control" name="OrderLine[0].ProductType">
+                                <option value="0">Apparel</option>
+                                <option value="1">Parts</option>
+                                <option value="2">Equipment</option>
+                                <option value="3">Motor</option>
+                            </select>
+                        </td>
+                        <td><input type="number" step="0.01" class="form-control" name="OrderLine[0].CostPrice" required></td>
+                        <td><input type="number" step="0.01" class="form-control" name="OrderLine[0].SalesPrice" required></td>
+                        <td><input type="number" class="form-control" name="OrderLine[0].Quantity" required></td>
+                        <td><button type="button" class="btn btn-danger" onclick="removeRow(this)">Remove</button></td>
+                    </tr>
+                </tbody>
+            </table>
+            <button type="button" class="btn btn-secondary" onclick="addOrderLine()">Add Order Line</button>
+            <br><br>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+
+    </div>
+</div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script>
+        let orderLineIndex = 1;
+
+        function addOrderLine() {
+            const newRow = `
+                        <tr>
+                            <td><input type="number" class="form-control" name="OrderLine[${orderLineIndex}].LineNumber" required></td>
+                            <td><input type="text" class="form-control" name="OrderLine[${orderLineIndex}].ProductCode" required></td>
+                            <td>
+                                <select class="form-control" name="OrderLine[${orderLineIndex}].ProductType">
+                                    <option value="0">Apparel</option>
+                                    <option value="1">Electronics</option>
+                                    <!-- Add other product types here -->
+                                </select>
+                            </td>
+                            <td><input type="number" step="0.01" class="form-control" name="OrderLine[${orderLineIndex}].CostPrice" required></td>
+                            <td><input type="number" step="0.01" class="form-control" name="OrderLine[${orderLineIndex}].SalesPrice" required></td>
+                            <td><input type="number" class="form-control" name="OrderLine[${orderLineIndex}].Quantity" required></td>
+                            <td><button type="button" class="btn btn-danger" onclick="removeRow(this)">Remove</button></td>
+                        </tr>`;
+            $('#orderLines').append(newRow);
+            orderLineIndex++;
+        }
+
+        function removeRow(button) {
+            $(button).closest('tr').remove();
+        }
+    </script>

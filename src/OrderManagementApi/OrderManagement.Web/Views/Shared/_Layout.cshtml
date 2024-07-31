@@ -1,0 +1,87 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
+    <title>@ViewData["Title"] - SalesApp</title>
+    <link rel="stylesheet" href="~/css/app.min.css">
+  <!-- Template CSS -->
+  <link rel="stylesheet" href="~/css/style.css">
+  <link rel="stylesheet" href="~/css/components.css">
+  <!-- Custom style CSS -->
+  <link rel="stylesheet" href="~/css/custom.css">
+  <link rel="stylesheet" href="~/bundles/bootstrap-daterangepicker/daterangepicker.css">
+  <link rel="stylesheet" href="~/bundles/bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css">
+  <link rel="stylesheet" href="~/bundles/select2/dist/css/select2.min.css">
+  <link rel="stylesheet" href="~/bundles/jquery-selectric/selectric.css">
+  <link rel="stylesheet" href="~/bundles/bootstrap-timepicker/css/bootstrap-timepicker.min.css">
+  <link rel="stylesheet" href="~/bundles/bootstrap-tagsinput/dist/bootstrap-tagsinput.css">
+  <link rel="stylesheet" href="~/bundles/datatables/datatables.min.css">
+  <link rel="stylesheet" href="~/bundles/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css">
+  <!-- Template CSS -->
+  <!-- Custom style CSS -->
+  <link rel='shortcut icon' type='image/x-icon' href='~/img/favicon.ico' />
+</head>
+<body>
+    <div class="loader"></div>
+  <div id="app">
+      <div class="main-wrapper main-wrapper-1">
+      <div class="navbar-bg"></div>
+     <partial name="~/Views/Shared/_Navbar.cshtml" />
+    <partial name="/Views/Shared/_Sidebar.cshtml" />
+        
+
+
+    <div class="main-content">
+        <section class="section">
+            <div class="section-body">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+        </div>
+        </section>
+    </div>
+       </div>
+      </div>
+
+    <footer class="main-footer">
+        <div class="footer-left">
+         &copy; @DateTime.Now.Year - SalesApp
+        </div>
+        <div class="footer-right">
+        </div>
+      </footer>
+    <!-- General JS Scripts -->
+  <script src="~/js/app.min.js"></script>
+  <!-- JS Libraies -->
+  <script src="~/bundles/apexcharts/apexcharts.min.js"></script>
+ 
+  <!-- Page Specific JS File -->
+  <script src="~/js/page/index.js"></script>
+  <!-- Template JS File -->
+  <script src="~/js/scripts.js"></script>
+  <!-- Custom JS File -->
+  <script src="~/js/custom.js"></script>
+  <script src="~/bundles/jquery-validation/dist/jquery.validate.min.js"></script>
+  <script src="~/bundles/jquery-steps/jquery.steps.min.js"></script>
+  <script src="~/js/page/form-wizard.js"></script>
+  <script src="~/bundles/bootstrap-daterangepicker/daterangepicker.js"></script>
+  <script src="~/bundles/cleave-js/dist/cleave.min.js"></script>
+  <script src="~/bundles/cleave-js/dist/addons/cleave-phone.us.js"></script>
+  <script src="~/bundles/jquery-pwstrength/jquery.pwstrength.min.js"></script>
+  <script src="~/bundles/bootstrap-daterangepicker/daterangepicker.js"></script>
+  <script src="~/bundles/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js"></script>
+  <script src="~/bundles/bootstrap-timepicker/js/bootstrap-timepicker.min.js"></script>
+  <script src="~/bundles/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js"></script>
+  <script src="~/bundles/select2/dist/js/select2.full.min.js"></script>
+  <script src="~/bundles/jquery-selectric/jquery.selectric.min.js"></script>
+  <script src="~/bundles/datatables/datatables.min.js"></script>
+  <script src="~/bundles/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js"></script>
+   <script src="~/bundles/jquery-ui/jquery-ui.min.js"></script>
+  <!-- Page Specific JS File -->
+  <script src="~/js/page/datatables.js"></script>
+  <!-- Page Specific JS File -->
+  <script src="~/js/page/forms-advanced-forms.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

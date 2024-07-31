@@ -1,0 +1,58 @@
+﻿@model OrderManagement.Data.Models.Response.Orders.SalesOrders;
+@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
+@{
+    var email = HttpContextAccessor.HttpContext.Session.GetString("_email");
+}
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-striped" id="table-1">
+                        <thead>
+                            <tr>
+                                <th class="text-center">
+                                    #
+                                </th>
+                                <th>OrderNumber</th>
+                                <th>OrderType</th>
+                                <th>OrderStatus</th>
+                                <th>CustomerName</th>
+                                <th>CreateDate</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{
+                                if (Model.OrderHeaders != null)
+                                {
+                                    int counter = 1;
+                                    foreach (var item in Model.OrderHeaders)
+                                    {
+                                        <tr>
+                                            <td>@counter</td>
+                                            <td>@item.OrderNumber</td>
+                                            <td class="align-middle">@item.OrderType</td>
+                                            <td class="align-middle">@item.OrderStatus</td>
+                                            <td>@item.CustomerName</td>
+                                            <td>@item.CreateDate</td>
+                                            <td><a asp-action="SearchOrder" asp-route-orderNumber="@item.OrderNumber" asp-controller="Home" class="btn btn-primary"> Detail</a></td>
+                                        </tr>
+                                        counter++;
+                                    }
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
